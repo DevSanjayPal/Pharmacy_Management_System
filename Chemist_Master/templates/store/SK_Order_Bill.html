@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(12, 85, 85); color: white;">
+    
+    
+    <h2 align="center" style="text-decoration: underline;">Bill No : {{ billNo }}</h2>
+    <br> <br>
+    <h2 align="center" style="text-decoration: underline;"> Date : {{ ddate }}</h2>
+    <!-- <div style="margin-left:15%;  width:100%;">
+        <table style="height: auto;" cellspacing="1" cellpadding="10">  
+            <tr>
+                <td style="color: black; height: 20%;font-size:large;font-weight:bolder"><u> Name </u>:</td>
+                <td style="color: black; height: 20%;font-size:large">{{ sperson.StoreName }}</td>
+            </tr>
+            <tr>
+                <td style="color: black; height: 20%;font-size:large"><u>Person Name </u>: {{ sperson.PersonName }}</td>
+            </tr>
+            <tr>
+                <td style="color: black; height: 20%;font-size:large"><u>Contact :</u> {{ sperson.Contact }}</td>
+            </tr>
+            <tr>
+                <td style="color: black; height: 20%;font-size:large"><u>Email :</u> {{ sperson.email }}</td>
+            </tr>
+            <tr>
+                <td style="color: black; height: 20%;font-size:large"><u>Address :</u>{{ sperson.add1 }}</td>
+            </tr>
+            <tr>
+                <td  style="color: black; height: 20%;font-size:large"><u>Date :</u>{{ ddate }}</td>
+                
+            </tr>
+        </table>
+    </div> -->
+    <br><br>
+    <br>
+    <h3>
+        <table border="3" style="margin-left:15%; width:78%; border: 2px solid rgb(179, 173, 173); text-align: center; ;" class="table">
+            <thead style=" background-color: rgb(20, 51, 56);">
+                <tr>
+                    <th>No.</th>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Product QTY</th>
+                    <th>Product Total</th>
+                </tr>
+            </thead>
+            <tbody >
+                {% for i in BillDes %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.pd_nm }}</td>
+                    <td>{{ i.pd_price }}</td>
+                    <td>{{ i.pd_qty }}</td>
+                    <td>{{ i.pd_tot }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="4">Payeble Amount </td>
+                    <td>{{ tot }}</td>
+                </tr>
+    </tbody>
+</table>
+<td> <div style="margin-left:50%; background-color: rgb(1, 194, 130); width: 80px; height: 30px; margin-top: 20px;">
+    <a  style="text-decoration: none; color: wheat;" class="btn btn-info" href="{% url 'chemist:sk_create_pdf' billNo %}"> View Bill </a>
+</div>
+</td>
+</table>
+</h3>
+
+</body>
+</html>

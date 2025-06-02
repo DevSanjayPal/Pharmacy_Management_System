@@ -1,0 +1,188 @@
+{% load static %}  
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}"/>  
+<style>
+  body{
+    background-image: url('/static/img/pill.jpg');
+    
+  }
+  
+  
+  .h-tag {
+  /* font-size: 30px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: h-tag 1s ease-in-out infinite alternate;
+  -moz-animation: h-tag 1s ease-in-out infinite alternate;
+  animation: h-tag 1s ease-in-out infinite alternate; */
+  padding-bottom: 30px;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  color: white;
+}
+
+/* @-webkit-keyframes h-tag {
+  from {
+    text-shadow: 0 0 10px #1c8adb, 0 0 20px#1c8adb, 0 0 30px #1c8adb, 0 0 40px  #1c8adb, 0 0 50px#1c8adb, 0 0 60px#1c8adb, 0 0 70px #1c8adb;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #1316db, 0 0 40px#1316db, 0 0 50px#1316db, 0 0 60px #1316db, 0 0 70px#1316db, 0 0 80px#1316db;
+  }
+} */
+.post-form{    
+  background: rgb(0 0 0 / 82%);
+    color: white;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+.post-form input[type="text"], input[type="number"] , select[id = id_chemist], select[id="id_formulation"]
+{
+  padding: 5px;
+  border: none;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    color: azure;
+    border-radius: 8%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    font-size: 15px;
+}
+option{
+  background-color: rgb(46, 46, 44);
+}
+.button
+{
+    border: none;
+    outline: none;
+    background: #1c8adb;
+    font-size: 15px;
+    border-radius: 8px;
+    padding: 10px 24px;
+    background-color: white; 
+  color: black; 
+  border: 2px solid #4ca8af;
+}
+.button:hover
+{
+    cursor: pointer;
+    background: #4ca8af;
+    color: rgb(250, 253, 249);
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style> 
+  </head>  
+<body>  
+  <form method="POST" class="box"> 
+    {% csrf_token %}
+    
+ <!-- <h1 class="h3-tag">Add New Medicine</h1>
+ {{form.as_p}} -->
+
+ <h1 class="h3-tag">Update Medicine</h1>
+<center>
+  <table>
+    
+    <tr>
+      <td>
+     <label for="id_mname">Medicine_Name:</label> 
+     <input type="text"  name="mname" maxlength="30" required id="id_mname" value="{{medi.mname}}">
+    </td>
+   <td>
+     <label for="id_symptoms">Symptoms:</label> 
+     <input type="text" name="symptoms" maxlength="1000" required id="id_symptoms"  value="{{medi.symptoms}}">
+    </td>
+   <td>
+     <label for="id_diseases">Diseases:</label>
+      <input type="text"  name="diseases" maxlength="1000" required id="id_diseases"  value="{{medi.diseases}}">
+    </td>
+    </tr>
+ 
+    <tr>
+        <td>
+     <label for="id_category">Type:</label> 
+     <input type="text" name="category" maxlength="50" required id="id_category"  value="{{medi.category}}">
+    </td>
+   <td>
+     <label for="id_unit">Unit:</label>
+      <input type="text" name="unit" maxlength="10" required id="id_unit"  value="{{medi.unit}}">
+    </td>
+   <td>
+     <label for="id_unit_price">Unit_price:</label>
+      <input type="number" name="unit_price" step="any" required id="id_unit_price"  value="{{medi.unit_price}}">
+    </td>
+    </tr>
+   <tr>
+    <td>
+     <label for="id_package_unit">Package_Unit:</label> 
+     <input type="text" name="package_unit" maxlength="10" required id="id_package_unit"  value="{{medi.package_unit}}">
+    </td>
+   <td>
+     <label for="id_package_price">Package_price:</label> 
+     <input type="number" name="package_price" step="any" required id="id_package_price"  value="{{medi.package_price}}">
+    </td>
+   <td>
+     <label for="id_drug">Drug_Name:</label> 
+     <input type="text" name="drug" maxlength="20" required id="id_drug"  value="{{medi.drug}}">
+    </td>
+    </tr>
+   
+    <tr>
+      <td>
+     <label for="id_per_unit">Per_unit:</label> 
+     <input type="text" name="per_unit" maxlength="10" required id="id_per_unit"  value="{{medi.per_unit}}">
+    </td>
+   <td>
+     <label for="id_indication">Indication:</label>
+      <input type="text" name="indication" maxlength="100" required id="id_indication" value="{{medi.indication}}">
+    </td>
+   <td>
+     <label for="id_contraindication">Containdication:</label>
+      <input type="text" name="contraindication" maxlength="100" required id="id_contraindication"  value="{{medi.contraindication}}">
+    </td>
+    </tr>
+    <tr>
+      <td>
+     <label for="id_caution">Caution:</label> 
+     <input type="text" name="caution" maxlength="500" required id="id_caution"  value="{{medi.caution}}">
+    </td>
+   <td>
+     <label for="id_side_effect">Side-Effect:</label>
+      <input type="text" name="side_effect" maxlength="500" required id="id_side_effect"  value="{{medi.side_effect}}">
+    </td>
+
+    </tr>
+    </table>
+  </center>
+
+    </form>
+
+</body>
+</html> 
